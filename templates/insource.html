@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+
+{% block head %}
+<title>Insourcing Table</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom"><a href="../" class="link-underline-light text-dark">Operations on the S.O.S. Database</a></h2>
+    <h4 class="py-4 ">Logistics Management Module:</h4>
+    <h5 class="pb-3">Insourcing Table</h5>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Request ID</th>
+          <th scope="col">Delivery Time</th>
+          <th scope="col">Courier ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Phone</th>
+          <th scope="col">License Type</th>
+          <th scope="col">Vehicle ID</th>
+          <th scope="col">Vehicle Type</th>
+          <th scope="col">Capacity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <form action="/logistics/insource/create" method="post">
+            <th scope="row"><input type="text" name="requestid" class="form-control"></th>
+            <td><input type="text" name="deliverytime" class="form-control"></td>
+            <td><input type="text" name="courierid" class="form-control"></td>
+            <td><input type="text" name="name" class="form-control"></td>
+            <td><input type="text" name="surname" class="form-control"></td>
+            <td><input type="text" name="phone" class="form-control"></td>
+            <td><input type="text" name="licencetype" class="form-control"></td>
+            <td><input type="text" name="vehicleid" class="form-control"></td>
+            <td><input type="text" name="vehicletype" class="form-control"></td>
+            <td><input type="text" name="capacity" class="form-control"></td>
+            <td><button type="submit" class="btn btn-success">Create</button></td>
+          </form>
+        </tr>
+        {% for insourcing in insourcings %}
+          <tr>
+            {% if vehicleid != insourcing[9] and courierid != insourcing[4] -%}
+              <th scope="row">{{ insourcing[0] }}</th>
+              <td>{{ insourcing[3] }}</td>
+              <td>{{ insourcing[4] }}</td>
+              <td>{{ insourcing[5] }}</td>
+              <td>{{ insourcing[6] }}</td>
+              <td>{{ insourcing[7] }}</td>
+              <td>{{ insourcing[8] }}</td>
+              <td>{{ insourcing[9] }}</td>
+              <td>{{ insourcing[10] }}</td>
+              <td>{{ insourcing[11] }}</td>
+              <td class="row">
+                <form class="col" action="/logistics/insource/{{ insourcing[9] }}/{{ insourcing[4] }}" method="post">
+                  <input type="hidden" name="update">
+                  <button type="submit" class="btn btn-warning">Update</button>
+                </form>
+                <form class="col" action="/logistics/insource/delete/{{ insourcing[9] }}/{{ insourcing[4] }}" method="post">
+                  <input type="hidden" name="delete">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </td>
+            {%- else -%}
+              <form action="/logistics/insource/update/{{ insourcing[9] }}/{{ insourcing[4] }}" method="post">
+                <th scope="row"><input type="text" name="requestid" class="form-control" value="{{ insourcing[0] }}"></th>
+                <td><input type="text" name="deliverytime" class="form-control" value="{{ insourcing[3] }}"></td>
+                <td>{{ insourcing[4] }}</td>
+                <td><input type="text" name="name" class="form-control" value="{{ insourcing[5] }}"></td>
+                <td><input type="text" name="surname" class="form-control" value="{{ insourcing[6] }}"></td>
+                <td><input type="text" name="phone" class="form-control" value="{{ insourcing[7] }}"></td>
+                <td><input type="text" name="licencetype" class="form-control" value="{{ insourcing[8] }}"></td>
+                <td>{{ insourcing[9] }}</td>
+                <td><input type="text" name="vehicletype" class="form-control" value="{{ insourcing[10] }}"></td>
+                <td><input type="text" name="capacity" class="form-control" value="{{ insourcing[11] }}"></td>
+                <td class="justify-content">
+                  <button type="submit" class="btn btn-warning">Update</button>
+                  <form action="/logistics/insource/delete/{{ insourcing[9] }}/{{ insourcing[4] }}" method="post">
+                    <input type="hidden" name="delete">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </td>
+              </form>
+              
+            {%- endif %}
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  
+{% endblock %}

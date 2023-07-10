@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+
+{% block head %}
+<title>Home Page</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom">Operations on the S.O.S. Database</h2>
+    <h4 class="py-4 ">Choose a Module To Work on:</h4>
+    <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Donation Management</h5>
+              <p class="card-text">This module enables donators to log in to the system and submit their
+                donations.</p>
+              <a href="/donation" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Logistics Management</h5>
+              <p class="card-text">This module manages the flow of relief supplies from S.O.S. to disaster
+                victims.</p>
+              <a href="/logistics" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Performance Management</h5>
+              <p class="card-text">This module generates response time report for each request, and other 
+                related values.</p>
+              <a href="/performance" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+{% endblock %}

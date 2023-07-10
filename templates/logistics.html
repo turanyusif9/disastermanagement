@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+
+{% block head %}
+<title>Logistics Management</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container px-4 py-5" id="featured-3">
+  <h2 class="pb-2 border-bottom"><a href="./" class="link-underline-light text-dark">Operations on the S.O.S. Database</a></h2>
+    <h4 class="py-4 ">Logistics Management Module:</h4>
+    <div class="card-group">
+      <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Insourcing Information</h5>
+            <p class="card-text">Information of the logistics done by the company itself.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Courier Info</li>
+            <li class="list-group-item">Vehicle Info</li>
+            <li class="list-group-item">Request ID</li>
+            <li class="list-group-item">Delivery Time</li>
+          </ul>
+          <div class="card-body">
+            <a href="/logistics/insource" class="btn btn-primary">View</a>
+          </div>
+        </div>
+  
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Outsourcing Information</h5>
+            <p class="card-text">Information of the logistics outsourced to a different company.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Company & District Info</li>
+            <li class="list-group-item">Cost of Outsourcing</li>
+            <li class="list-group-item">Request ID</li>
+            <li class="list-group-item">Delivery Time</li>
+          </ul>
+          <div class="card-body">
+            <a href="/logistics/outsource" class="btn btn-primary">View</a>
+          </div>
+        </div>
+  </div>
+  </div>
+{% endblock %}

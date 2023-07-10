@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+
+
+{% block head %}
+<title>Outsourcing Table</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container px-4 py-5" id="featured-3">
+    <h2 class="pb-2 border-bottom"><a href="../" class="link-underline-light text-dark">Operations on the S.O.S. Database</a></h2>
+    <h4 class="py-4 ">Logistics Management Module:</h4>
+    <h5 class="pb-3">Outsourcing Table</h5>
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th scope="col">District ID</th>
+          <th scope="col">District Name</th>
+          <th scope="col">Coordination</th>
+          <th scope="col">Population</th>
+          <th scope="col">CompanyID</th>
+          <th scope="col">Company Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Cost of Outsource</th>
+          <th scope="col">Request ID</th>
+          <th scope="col">Delivery Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <form action="/logistics/outsource/create" method="post">
+            <th scope="row"><input type="text" name="districtid" class="form-control"></th>
+            <td><input type="text" name="districtname" class="form-control"></td>
+            <td><input type="text" name="coordination" class="form-control"></td>
+            <td><input type="text" name="population" class="form-control"></td>
+            <td><input type="text" name="companyid" class="form-control"></td>
+            <td><input type="text" name="companyname" class="form-control"></td>
+            <td><input type="text" name="phone" class="form-control"></td>
+            <td><input type="text" name="cost" class="form-control"></td>
+            <td><input type="text" name="requestid" class="form-control"></td>
+            <td><input type="text" name="deliverytime" class="form-control"></td>
+            <td><button type="submit" class="btn btn-success">Create</button></td>
+          </form>
+        </tr>
+        {% for outsourcing in outsourcings %}
+          <tr>
+            {% if districtid != outsourcing[3] and companyid != outsourcing[7] -%}
+              <th scope="row">{{ outsourcing[3] }}</th>
+              <td>{{ outsourcing[4] }}</td>
+              <td>{{ outsourcing[5] }}</td>
+              <td>{{ outsourcing[6] }}</td>
+              <td>{{ outsourcing[7] }}</td>
+              <td>{{ outsourcing[8] }}</td>
+              <td>{{ outsourcing[9] }}</td>
+              <td>{{ outsourcing[2] }}</td>
+              <td>{{ outsourcing[10] }}</td>
+              <td>{{ outsourcing[12] }}</td>
+              <td class="row">
+                <form class="col" action="/logistics/outsource/{{ outsourcing[3] }}/{{ outsourcing[7] }}" method="post">
+                  <input type="hidden" name="update">
+                  <button type="submit" class="btn btn-warning">Update</button>
+                </form>
+                <form class="col" action="/logistics/outsource/delete/{{ outsourcing[3] }}/{{ outsourcing[7] }}" method="post">
+                  <input type="hidden" name="delete">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </td>
+            {%- else -%}
+              <form action="/logistics/outsource/update/{{ outsourcing[3] }}/{{ outsourcing[7] }}" method="post">
+                <th scope="row">{{outsourcing[3]}}</th>
+                <td><input type="text" name="districtname" class="form-control" value="{{outsourcing[4]}}"></td>
+                <td><input type="text" name="coordination" class="form-control"  value="{{outsourcing[5]}}"></td>
+                <td><input type="text" name="population" class="form-control"  value="{{outsourcing[6]}}"></td>
+                <td>{{outsourcing[7]}}</td>
+                <td><input type="text" name="companyname" class="form-control"  value="{{outsourcing[8]}}"></td>
+                <td><input type="text" name="phone" class="form-control"  value="{{outsourcing[9]}}"></td>
+                <td><input type="text" name="cost" class="form-control"  value="{{outsourcing[2]}}"></td>
+                <td><input type="text" name="requestid" class="form-control"  value="{{outsourcing[10]}}"></td>
+                <td><input type="text" name="deliverytime" class="form-control"  value="{{outsourcing[12]}}"></td>
+                <td class="justify-content">
+                  <button type="submit" class="btn btn-warning">Update</button>
+                  <form action="/logistics/outsource/delete/{{ outsourcing[3] }}/{{ outsourcing[7] }}" method="post">
+                    <input type="hidden" name="delete">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </td>
+              </form>
+              
+            {%- endif %}
+            
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  
+{% endblock %}
