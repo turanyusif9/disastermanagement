@@ -37,7 +37,7 @@ CREATE TABLE `donator` (
 
 LOCK TABLES `donator` WRITE;
 /*!40000 ALTER TABLE `donator` DISABLE KEYS */;
-INSERT INTO `donator` VALUES (1,'Jafar','Jafarli','2418473'),(2,'Turan','Yusif','2487320'),(3,'Mahammad','Abilov','+93012489384'),(4,'Omer','Korkmaz','+234235235'),(5,'Ata','Eygay','+14235981'),(6,'Feyza','Karli','+940234901');
+INSERT INTO `donator` VALUES (1,'Lorem','Ipsum','+90000000'),(2,'Dolor','Sit','+900000000');
 /*!40000 ALTER TABLE `donator` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
