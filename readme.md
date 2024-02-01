@@ -10,4 +10,4 @@ The Donation Management module has sections which are concerned with donator and
 
 # Instructions
 
-The application is made using Flask framework, to make the application work you need to import database model from "database" folder and configure server with the relevant credentials set up in "app.py" file. After the successful connection, run `env\Scripts\activate.bat` to configure environment and `flask run` command in the console. Click local website link to access the application.
+The application is made using Flask framework, to make the application work you need to import database model from "database" folder and configure server with the relevant credentials set up in "app.py" file. After a successful connection, create a virtual environment and install the requirements. Finally, `flask run` command in the console. Click the local website link to access the application.
