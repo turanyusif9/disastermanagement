@@ -268,10 +268,6 @@ def update_outsourcing(districtid, companyid):
     return redirect('/logistics/outsource')
 
 
-@app.route('/performance')
-def performance():
-    return render_template('performance.html')
-
 if __name__ == "__name__":
     app.run()
 
