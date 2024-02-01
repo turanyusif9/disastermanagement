@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL 
- 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
  
 app = Flask(__name__)
  
-
+# replace the credentials to 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'turan2003'
+app.config['MYSQL_PASSWORD'] = os.environ['MYSQL_PASSWORD']
 app.config['MYSQL_DB'] = 's.o.s.'
  
-app.secret_key = 'super secret key'
+app.secret_key = os.environ['SECRET_KEY']
 
 mysql = MySQL(app)
 
